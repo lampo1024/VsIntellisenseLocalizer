@@ -9,6 +9,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="AngleSharp" Version="0.16.1" />
+	  <PackageReference Include="Flurl.Http" Version="3.2.2" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Compile Update="VilSettings.Designer.cs">
 			<DesignTimeSharedInput>True</DesignTimeSharedInput>
 			<AutoGen>True</AutoGen>

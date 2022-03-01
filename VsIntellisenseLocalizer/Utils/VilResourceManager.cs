@@ -24,6 +24,11 @@ namespace VsIntellisenseLocalizer.Utils
         {
             return ResManager.GetString(resourceName, _cultureInfo);
         }
+        public static string GetResource(string resourceName, params object[] param)
+        {
+            var resource = ResManager.GetString(resourceName, _cultureInfo);
+            return string.IsNullOrEmpty(resource) ? "" : string.Format(resource, param);
+        }
         public static T GetResource<T>(string resourceName)
         {
             return (T)ResManager.GetObject(resourceName, _cultureInfo);

@@ -117,7 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="MainTitle" xml:space="preserve">
+  <data name="Main.Button.InstallLocalizePackage" xml:space="preserve">
+    <value>安装语言包</value>
+  </data>
+  <data name="Main.Button.SelectDownloadFolder" xml:space="preserve">
+    <value>选择目录</value>
+  </data>
+  <data name="Main.FolderBrowserDialog.Description" xml:space="preserve">
+    <value>请选择语言包保存目录</value>
+  </data>
+  <data name="Main.Label.AvailableNetVersion" xml:space="preserve">
+    <value>可用的.NET语言包版本</value>
+  </data>
+  <data name="Main.Label.InstalledNetVersion" xml:space="preserve">
+    <value>需要本地化的.NET版本</value>
+  </data>
+  <data name="Main.StatusLeft.Ready" xml:space="preserve">
+    <value>已就绪</value>
+  </data>
+  <data name="Main.Title" xml:space="preserve">
     <value>Visual Studio智能提示语言本地化工具</value>
+  </data>
+  <data name="Message.Alert.PackageDownloaded" xml:space="preserve">
+    <value>语言包下载完成.</value>
+  </data>
+  <data name="Message.Alert.PackageDownloading" xml:space="preserve">
+    <value>正在下载语言包...</value>
+  </data>
+  <data name="Message.Alert.SelectPackageFile" xml:space="preserve">
+    <value>请选择语言包</value>
+  </data>
+  <data name="Message.Alert.SelectStorageLocation" xml:space="preserve">
+    <value>请选择语言包的存储目录</value>
   </data>
 </root>

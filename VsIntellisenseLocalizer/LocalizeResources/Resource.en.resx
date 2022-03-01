@@ -117,7 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="MainTitle" xml:space="preserve">
+  <data name="Main.Button.InstallLocalizePackage" xml:space="preserve">
+    <value>Install Package</value>
+  </data>
+  <data name="Main.Button.SelectDownloadFolder" xml:space="preserve">
+    <value>Select Folder</value>
+  </data>
+  <data name="Main.FolderBrowserDialog.Description" xml:space="preserve">
+    <value>Please select package location</value>
+  </data>
+  <data name="Main.Label.AvailableNetVersion" xml:space="preserve">
+    <value>All Available .NET IntelliSense files</value>
+  </data>
+  <data name="Main.Label.InstalledNetVersion" xml:space="preserve">
+    <value>Needs to be localized .NET</value>
+  </data>
+  <data name="Main.StatusLeft.Ready" xml:space="preserve">
+    <value>Ready</value>
+  </data>
+  <data name="Main.Title" xml:space="preserve">
     <value>Visual Studio Intellisense Localizer</value>
+  </data>
+  <data name="Message.Alert.PackageDownloaded" xml:space="preserve">
+    <value>Package downloaded.</value>
+  </data>
+  <data name="Message.Alert.PackageDownloading" xml:space="preserve">
+    <value>Package downloading...</value>
+  </data>
+  <data name="Message.Alert.SelectPackageFile" xml:space="preserve">
+    <value>Please select localized IntelliSense file</value>
+  </data>
+  <data name="Message.Alert.SelectStorageLocation" xml:space="preserve">
+    <value>Please select localized package store location</value>
   </data>
 </root>

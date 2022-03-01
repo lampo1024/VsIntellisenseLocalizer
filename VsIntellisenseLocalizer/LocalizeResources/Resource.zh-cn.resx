@@ -138,6 +138,15 @@
   <data name="Main.Title" xml:space="preserve">
     <value>Visual Studio智能提示语言本地化工具</value>
   </data>
+  <data name="Message.Alert.CopyingPackage" xml:space="preserve">
+    <value>正在复制语言包{0}...</value>
+  </data>
+  <data name="Message.Alert.CopyPackageSuccessful" xml:space="preserve">
+    <value>语言包{0}复制成功</value>
+  </data>
+  <data name="Message.Alert.LocalizedSuccessful" xml:space="preserve">
+    <value>本地化成功，语言包将在Visual Studio重启后生效。</value>
+  </data>
   <data name="Message.Alert.PackageDownloaded" xml:space="preserve">
     <value>语言包下载完成.</value>
   </data>
@@ -152,5 +161,11 @@
   </data>
   <data name="Message.Alert.SelectStorageLocation" xml:space="preserve">
     <value>请选择语言包的存储目录</value>
+  </data>
+  <data name="Message.Alert.UnzipingPackage" xml:space="preserve">
+    <value>正在解压语言包...</value>
+  </data>
+  <data name="Message.Alert.UnzipPackageCompleted" xml:space="preserve">
+    <value>语言包解压完成</value>
   </data>
 </root>

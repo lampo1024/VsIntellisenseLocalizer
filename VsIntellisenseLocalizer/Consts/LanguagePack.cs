@@ -14,6 +14,10 @@
         public const string Message_Alert_PackageDownloaded = "Message.Alert.PackageDownloaded";
         public const string Message_Alert_SelectPackageFile = "Message.Alert.SelectPackageFile";
         public const string Message_Alert_SelectNetVersion = "Message.Alert.SelectNetVersion";
-
+        public const string Message_Alert_UnzipingPackage = "Message.Alert.UnzipingPackage";
+        public const string Message_Alert_UnzipPackageCompleted = "Message.Alert.UnzipPackageCompleted";
+        public const string Message_Alert_CopyingPackage = "Message.Alert.CopyingPackage";
+        public const string Message_Alert_CopyPackageSuccessful = "Message.Alert.CopyPackageSuccessful";
+        public const string Message_Alert_LocalizedSuccessful = "Message.Alert.LocalizedSuccessful";
     }
 }

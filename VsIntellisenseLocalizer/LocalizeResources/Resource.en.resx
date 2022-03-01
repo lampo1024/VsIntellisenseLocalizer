@@ -138,6 +138,15 @@
   <data name="Main.Title" xml:space="preserve">
     <value>Visual Studio Intellisense Localizer</value>
   </data>
+  <data name="Message.Alert.CopyingPackage" xml:space="preserve">
+    <value>Copying package {0}...</value>
+  </data>
+  <data name="Message.Alert.CopyPackageSuccessful" xml:space="preserve">
+    <value>Package {0} copied successfully.</value>
+  </data>
+  <data name="Message.Alert.LocalizedSuccessful" xml:space="preserve">
+    <value>Localized successfully. Changes to the languages setting will not take effect until the environment restarted.</value>
+  </data>
   <data name="Message.Alert.PackageDownloaded" xml:space="preserve">
     <value>Package downloaded.</value>
   </data>
@@ -152,5 +161,11 @@
   </data>
   <data name="Message.Alert.SelectStorageLocation" xml:space="preserve">
     <value>Please select localized package store location</value>
+  </data>
+  <data name="Message.Alert.UnzipingPackage" xml:space="preserve">
+    <value>Unziping package...</value>
+  </data>
+  <data name="Message.Alert.UnzipPackageCompleted" xml:space="preserve">
+    <value>Package unziped successfully.</value>
   </data>
 </root>

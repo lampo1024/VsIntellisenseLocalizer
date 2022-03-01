@@ -1,5 +1,7 @@
 using Flurl.Http;
+
 using System.IO.Compression;
+
 using VsIntellisenseLocalizer.Consts;
 using VsIntellisenseLocalizer.Models;
 using VsIntellisenseLocalizer.Utils;
@@ -56,7 +58,7 @@ namespace VsIntellisenseLocalizer
             lboxVersions.ValueMember = "Version";
             lboxVersions.DisplayMember = "Version";
             lboxVersions.SelectionMode = selectionMode;
-            statusLeft.Text = L.Main_StatusLeft_Ready.Locale();
+            UpdateStatusText(L.Main_StatusLeft_Ready.Locale());
         }
 
         private void lboxVersions_SelectedValueChanged(object sender, EventArgs e)
@@ -131,15 +133,15 @@ namespace VsIntellisenseLocalizer
             if (!File.Exists(sourceFile))
             {
                 btnInstallLocalizePackage.Enabled = false;
-                statusLeft.Text = L.Message_Alert_PackageDownloading.Locale();
+                UpdateStatusText(L.Message_Alert_PackageDownloading.Locale());
                 await _selectedResource.Url.DownloadFileAsync(txtDownloadFolder.Text, _selectedResource.FileName);
                 btnInstallLocalizePackage.Enabled = true;
-                statusLeft.Text = L.Message_Alert_PackageDownloaded.Locale();
+                UpdateStatusText(L.Message_Alert_PackageDownloaded.Locale());
             }
 
             // unzip package
-            var distFolder = Path.Combine(txtDownloadFolder.Text, _selectedResource.FileNameWithoutExt);
-            if (!Directory.Exists(distFolder))
+            var distFolder = Path.Combine(txtDownloadFolder.Text);
+            if (!Directory.Exists(Path.Combine(txtDownloadFolder.Text, _selectedResource.FileNameWithoutExt)))
             {
                 ZipFile.ExtractToDirectory(sourceFile, distFolder);
             }
@@ -160,8 +162,28 @@ namespace VsIntellisenseLocalizer
                     Directory.CreateDirectory(dist);
                 }
                 var source = Path.Combine(txtDownloadFolder.Text, _selectedResource.FileNameWithoutExt, folder, _selectedResource.Lang);
+                UpdateStatusText(L.Message_Alert_CopyingPackage.Locale(folder));
                 FileHelper.CopyFilesRecursively(source, dist);
+                UpdateStatusText(L.Message_Alert_CopyPackageSuccessful.Locale(folder));
             }
+
+            // Copy NETStandard.Library.Ref
+            UpdateStatusText(L.Message_Alert_CopyingPackage.Locale("NETStandard.Library.Ref"));
+            var sourceStandard = Path.Combine(txtDownloadFolder.Text, _selectedResource.FileNameWithoutExt, "NETStandard.Library.Ref", _selectedResource.Lang);
+            var distStandard = Path.Combine(VilConst.DotNetPacksBasePath, "NETStandard.Library.Ref", "2.1.0", "ref", "netstandard2.1", _selectedResource.Lang);
+            if (!Directory.Exists(distStandard))
+            {
+                Directory.CreateDirectory(distStandard);
+            }
+            FileHelper.CopyFilesRecursively(sourceStandard, distStandard);
+            UpdateStatusText(L.Message_Alert_CopyPackageSuccessful.Locale("NETStandard.Library.Ref"));
+            UpdateStatusText(L.Message_Alert_LocalizedSuccessful.Locale());
+            MessageBox.Show(L.Message_Alert_LocalizedSuccessful.Locale());
+        }
+
+        private void UpdateStatusText(string message)
+        {
+            statusLeft.Text = message;
         }
     }
 }

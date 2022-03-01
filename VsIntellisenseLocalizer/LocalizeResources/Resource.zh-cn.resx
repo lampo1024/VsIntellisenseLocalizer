@@ -144,6 +144,9 @@
   <data name="Message.Alert.PackageDownloading" xml:space="preserve">
     <value>正在下载语言包...</value>
   </data>
+  <data name="Message.Alert.SelectNetVersion" xml:space="preserve">
+    <value>请选择需要本地化的.NET版本</value>
+  </data>
   <data name="Message.Alert.SelectPackageFile" xml:space="preserve">
     <value>请选择语言包</value>
   </data>

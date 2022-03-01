@@ -144,6 +144,9 @@
   <data name="Message.Alert.PackageDownloading" xml:space="preserve">
     <value>Package downloading...</value>
   </data>
+  <data name="Message.Alert.SelectNetVersion" xml:space="preserve">
+    <value>Please select .NET version that need to be localized.</value>
+  </data>
   <data name="Message.Alert.SelectPackageFile" xml:space="preserve">
     <value>Please select localized IntelliSense file</value>
   </data>

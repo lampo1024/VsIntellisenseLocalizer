@@ -13,6 +13,7 @@
         public const string Message_Alert_PackageDownloading = "Message.Alert.PackageDownloading";
         public const string Message_Alert_PackageDownloaded = "Message.Alert.PackageDownloaded";
         public const string Message_Alert_SelectPackageFile = "Message.Alert.SelectPackageFile";
+        public const string Message_Alert_SelectNetVersion = "Message.Alert.SelectNetVersion";
 
     }
 }

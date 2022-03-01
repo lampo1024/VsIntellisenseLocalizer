@@ -1,4 +1,5 @@
 using Flurl.Http;
+using System.IO.Compression;
 using VsIntellisenseLocalizer.Consts;
 using VsIntellisenseLocalizer.Models;
 using VsIntellisenseLocalizer.Utils;
@@ -11,6 +12,7 @@ namespace VsIntellisenseLocalizer
         private List<IntelliSenseFile> _intelliSenseFiles;
         private List<InstalledNet> _installedNets;
         private DownloadResource _selectedResource;
+        private InstalledNet _selectedInstalledNet;
         public frmMain()
         {
             InitializeComponent();
@@ -82,6 +84,7 @@ namespace VsIntellisenseLocalizer
             var version = item.Version.Replace("x", "");
             var selected = _installedNets.FirstOrDefault(x => x.VersionName.StartsWith(version));
             lboxInstalledVersions.SelectedItem = selected;
+            _selectedInstalledNet = selected;
             _selectedResource = null;
         }
 
@@ -122,15 +125,39 @@ namespace VsIntellisenseLocalizer
 
             if (lboxInstalledVersions.SelectedItem == null || lboxInstalledVersions.SelectedIndex < 0)
             {
-                MessageBox.Show("请选择需要本地化的.NET版本");
+                MessageBox.Show(L.Message_Alert_SelectNetVersion.Locale());
                 return;
             }
-            btnInstallLocalizePackage.Enabled = false;
-            statusLeft.Text = L.Message_Alert_PackageDownloading.Locale();
+            var sourceFile = Path.Combine(txtDownloadFolder.Text, _selectedResource.FileName);
+            if (!File.Exists(sourceFile))
+            {
+                btnInstallLocalizePackage.Enabled = false;
+                statusLeft.Text = L.Message_Alert_PackageDownloading.Locale();
+                await _selectedResource.Url.DownloadFileAsync(txtDownloadFolder.Text, _selectedResource.FileName);
+                btnInstallLocalizePackage.Enabled = true;
+                statusLeft.Text = L.Message_Alert_PackageDownloaded.Locale();
+            }
 
-            var url = await _selectedResource.Url.DownloadFileAsync(txtDownloadFolder.Text, _selectedResource.FileName);
-            btnInstallLocalizePackage.Enabled = true;
-            statusLeft.Text = L.Message_Alert_PackageDownloaded.Locale();
+            // 解压
+            var distFolder = Path.Combine(txtDownloadFolder.Text);
+            if (!Directory.Exists(distFolder))
+            {
+                ZipFile.ExtractToDirectory(sourceFile, distFolder);
+            }
+
+            // 复制
+            var distFolders = new List<string> { "Microsoft.NETCore.App.Ref", "Microsoft.WindowsDesktop.App.Ref" };
+            foreach (var folder in distFolders)
+            {
+                var f = InstalledNetFolderService.GetFolder(_selectedInstalledNet.VersionName);
+                var dist = Path.Combine(VilConst.DotNetPacksBasePath, folder, _selectedInstalledNet.VersionName, "ref", f.TargetName, _selectedResource.Lang);
+                if (!Directory.Exists(dist))
+                {
+                    Directory.CreateDirectory(dist);
+                }
+                var source = Path.Combine(txtDownloadFolder.Text, _selectedResource.FileNameWithoutExt, folder, _selectedResource.Lang);
+                FileHelper.CopyFilesRecursively(source, dist);
+            }
         }
     }
 }

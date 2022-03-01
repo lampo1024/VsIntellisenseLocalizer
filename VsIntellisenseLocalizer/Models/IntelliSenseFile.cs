@@ -1,4 +1,6 @@
-﻿namespace VsIntellisenseLocalizer.Models
+﻿using System.Text.RegularExpressions;
+
+namespace VsIntellisenseLocalizer.Models
 {
     public class IntelliSenseFile
     {
@@ -18,5 +20,15 @@
         public string Title { get; set; }
         public string Url { get; set; }
         public string FileName => Path.GetFileName(new Uri(Url).AbsolutePath);
+        public string FileNameWithoutExt => Path.GetFileNameWithoutExtension(FileName);
+
+        public string Lang
+        {
+            get
+            {
+                var pattern = @"dotnet-intellisense-.*?-(.*?)$";
+                return Regex.Match(FileNameWithoutExt, pattern).Groups[1].Value;
+            }
+        }
     }
 }

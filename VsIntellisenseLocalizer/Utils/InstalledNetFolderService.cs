@@ -14,7 +14,7 @@ namespace VsIntellisenseLocalizer.Utils
                 {
                     new InstalledNetFolder
                     {
-                        Version = "3.1.x",
+                        Version = "3.1",
                         TargetName = "netcoreapp3.1"
                     },
                     new InstalledNetFolder

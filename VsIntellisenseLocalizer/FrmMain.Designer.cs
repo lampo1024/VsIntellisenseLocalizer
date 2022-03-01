@@ -41,14 +41,18 @@
             this.lbAvailableNetVersion = new System.Windows.Forms.Label();
             this.lbInstalledNetVersion = new System.Windows.Forms.Label();
             this.lboxInstalledVersions = new System.Windows.Forms.ListBox();
+            this.panelSidebar = new System.Windows.Forms.Panel();
+            this.panelRight = new System.Windows.Forms.Panel();
             this.statusStrip1.SuspendLayout();
+            this.panelSidebar.SuspendLayout();
+            this.panelRight.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
             // 
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(650, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(647, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -56,9 +60,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLeft});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 430);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 431);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(650, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(647, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -90,7 +94,7 @@
             this.lboxVersions.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lboxVersions.FormattingEnabled = true;
             this.lboxVersions.ItemHeight = 17;
-            this.lboxVersions.Location = new System.Drawing.Point(11, 73);
+            this.lboxVersions.Location = new System.Drawing.Point(11, 16);
             this.lboxVersions.Name = "lboxVersions";
             this.lboxVersions.Size = new System.Drawing.Size(146, 123);
             this.lboxVersions.TabIndex = 4;
@@ -98,19 +102,18 @@
             // 
             // lvIntelliSenseFiles
             // 
-            this.lvIntelliSenseFiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvIntelliSenseFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.lang,
             this.packageUrl});
+            this.lvIntelliSenseFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvIntelliSenseFiles.FullRowSelect = true;
             this.lvIntelliSenseFiles.GridLines = true;
-            this.lvIntelliSenseFiles.Location = new System.Drawing.Point(164, 57);
+            this.lvIntelliSenseFiles.Location = new System.Drawing.Point(0, 0);
             this.lvIntelliSenseFiles.MultiSelect = false;
             this.lvIntelliSenseFiles.Name = "lvIntelliSenseFiles";
             this.lvIntelliSenseFiles.ShowGroups = false;
             this.lvIntelliSenseFiles.ShowItemToolTips = true;
-            this.lvIntelliSenseFiles.Size = new System.Drawing.Size(474, 360);
+            this.lvIntelliSenseFiles.Size = new System.Drawing.Size(466, 370);
             this.lvIntelliSenseFiles.TabIndex = 5;
             this.lvIntelliSenseFiles.UseCompatibleStateImageBehavior = false;
             this.lvIntelliSenseFiles.View = System.Windows.Forms.View.Details;
@@ -128,7 +131,7 @@
             // 
             // btnInstallLocalizePackage
             // 
-            this.btnInstallLocalizePackage.Location = new System.Drawing.Point(11, 375);
+            this.btnInstallLocalizePackage.Location = new System.Drawing.Point(11, 318);
             this.btnInstallLocalizePackage.Name = "btnInstallLocalizePackage";
             this.btnInstallLocalizePackage.Size = new System.Drawing.Size(147, 43);
             this.btnInstallLocalizePackage.TabIndex = 6;
@@ -139,7 +142,7 @@
             // lbAvailableNetVersion
             // 
             this.lbAvailableNetVersion.AutoSize = true;
-            this.lbAvailableNetVersion.Location = new System.Drawing.Point(8, 57);
+            this.lbAvailableNetVersion.Location = new System.Drawing.Point(8, 0);
             this.lbAvailableNetVersion.Name = "lbAvailableNetVersion";
             this.lbAvailableNetVersion.Size = new System.Drawing.Size(135, 15);
             this.lbAvailableNetVersion.TabIndex = 8;
@@ -148,7 +151,7 @@
             // lbInstalledNetVersion
             // 
             this.lbInstalledNetVersion.AutoSize = true;
-            this.lbInstalledNetVersion.Location = new System.Drawing.Point(8, 214);
+            this.lbInstalledNetVersion.Location = new System.Drawing.Point(8, 157);
             this.lbInstalledNetVersion.Name = "lbInstalledNetVersion";
             this.lbInstalledNetVersion.Size = new System.Drawing.Size(135, 15);
             this.lbInstalledNetVersion.TabIndex = 9;
@@ -160,22 +163,43 @@
             this.lboxInstalledVersions.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lboxInstalledVersions.FormattingEnabled = true;
             this.lboxInstalledVersions.ItemHeight = 17;
-            this.lboxInstalledVersions.Location = new System.Drawing.Point(11, 229);
+            this.lboxInstalledVersions.Location = new System.Drawing.Point(11, 172);
             this.lboxInstalledVersions.Name = "lboxInstalledVersions";
             this.lboxInstalledVersions.Size = new System.Drawing.Size(146, 140);
             this.lboxInstalledVersions.TabIndex = 10;
+            // 
+            // panelSidebar
+            // 
+            this.panelSidebar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panelSidebar.Controls.Add(this.lbAvailableNetVersion);
+            this.panelSidebar.Controls.Add(this.lboxInstalledVersions);
+            this.panelSidebar.Controls.Add(this.lboxVersions);
+            this.panelSidebar.Controls.Add(this.lbInstalledNetVersion);
+            this.panelSidebar.Controls.Add(this.btnInstallLocalizePackage);
+            this.panelSidebar.Location = new System.Drawing.Point(0, 57);
+            this.panelSidebar.Name = "panelSidebar";
+            this.panelSidebar.Size = new System.Drawing.Size(165, 371);
+            this.panelSidebar.TabIndex = 11;
+            // 
+            // panelRight
+            // 
+            this.panelRight.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelRight.Controls.Add(this.lvIntelliSenseFiles);
+            this.panelRight.Location = new System.Drawing.Point(175, 58);
+            this.panelRight.Name = "panelRight";
+            this.panelRight.Size = new System.Drawing.Size(466, 370);
+            this.panelRight.TabIndex = 12;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(650, 452);
-            this.Controls.Add(this.lboxInstalledVersions);
-            this.Controls.Add(this.lbInstalledNetVersion);
-            this.Controls.Add(this.lbAvailableNetVersion);
-            this.Controls.Add(this.btnInstallLocalizePackage);
-            this.Controls.Add(this.lvIntelliSenseFiles);
-            this.Controls.Add(this.lboxVersions);
+            this.ClientSize = new System.Drawing.Size(647, 453);
+            this.Controls.Add(this.panelRight);
+            this.Controls.Add(this.panelSidebar);
             this.Controls.Add(this.btnSelectDownloadFolder);
             this.Controls.Add(this.txtDownloadFolder);
             this.Controls.Add(this.statusStrip1);
@@ -185,6 +209,9 @@
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.panelSidebar.ResumeLayout(false);
+            this.panelSidebar.PerformLayout();
+            this.panelRight.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,5 +232,7 @@
         private Label lbInstalledNetVersion;
         private ToolStripStatusLabel statusLeft;
         private ListBox lboxInstalledVersions;
+        private Panel panelSidebar;
+        private Panel panelRight;
     }
 }

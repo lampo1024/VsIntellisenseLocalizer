@@ -97,7 +97,6 @@ namespace VsIntellisenseLocalizer
             var selectedIndex = lvIntelliSenseFiles.SelectedIndices[0];
             if (selectedIndex < 0) return;
             _selectedResource = (DownloadResource)lvIntelliSenseFiles.Items[selectedIndex].Tag;
-            //MessageBox.Show(package.Url);
         }
 
         private void btnSelectDownloadFolder_Click(object sender, EventArgs e)
@@ -138,18 +137,23 @@ namespace VsIntellisenseLocalizer
                 statusLeft.Text = L.Message_Alert_PackageDownloaded.Locale();
             }
 
-            // ½âÑ¹
-            var distFolder = Path.Combine(txtDownloadFolder.Text);
+            // unzip package
+            var distFolder = Path.Combine(txtDownloadFolder.Text, _selectedResource.FileNameWithoutExt);
             if (!Directory.Exists(distFolder))
             {
                 ZipFile.ExtractToDirectory(sourceFile, distFolder);
             }
 
-            // ¸´ÖÆ
+            // copy localized package to .NET assembly folder
             var distFolders = new List<string> { "Microsoft.NETCore.App.Ref", "Microsoft.WindowsDesktop.App.Ref" };
             foreach (var folder in distFolders)
             {
                 var f = InstalledNetFolderService.GetFolder(_selectedInstalledNet.VersionName);
+                var target = Path.Combine(VilConst.DotNetPacksBasePath, folder, _selectedInstalledNet.VersionName);
+                if (!Directory.Exists(target))
+                {
+                    continue;
+                }
                 var dist = Path.Combine(VilConst.DotNetPacksBasePath, folder, _selectedInstalledNet.VersionName, "ref", f.TargetName, _selectedResource.Lang);
                 if (!Directory.Exists(dist))
                 {

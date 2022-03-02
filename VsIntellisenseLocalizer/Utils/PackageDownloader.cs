@@ -7,9 +7,28 @@ namespace VsIntellisenseLocalizer.Utils
 {
     public class PackageDownloader
     {
+        private static async Task<string> Download()
+        {
+            var html = "";
+            var counter = 0;
+            do
+            {
+                try
+                {
+                    html = await "https://dotnet.microsoft.com/en-us/download/intellisense".GetStringAsync();
+                    break;
+                }
+                catch
+                {
+                    counter++;
+                }
+            } while (counter <= 3);
+
+            return html;
+        }
         public static async Task<List<IntelliSenseFile>> DownloadIntelliSenseFile()
         {
-            var html = await "https://dotnet.microsoft.com/en-us/download/intellisense".GetStringAsync();
+            var html = await Download();
             var config = Configuration.Default;
             var context = BrowsingContext.New(config);
             var document = await context.OpenAsync(req => req.Content(html));

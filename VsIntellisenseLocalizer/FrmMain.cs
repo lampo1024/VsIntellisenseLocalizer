@@ -51,15 +51,22 @@ namespace VsIntellisenseLocalizer
 
         private async void frmMain_Load(object sender, EventArgs e)
         {
-            _intelliSenseFiles = await PackageDownloader.DownloadIntelliSenseFile();
-            var selectionMode = lboxVersions.SelectionMode;
-            lboxVersions.SelectionMode = SelectionMode.None;
-            lboxVersions.DataSource = _intelliSenseFiles;
-            lboxVersions.ValueMember = "Version";
-            lboxVersions.DisplayMember = "Version";
-            lboxVersions.SelectionMode = selectionMode;
-            lboxVersions.SelectedIndex = 0;
-            UpdateStatusText(L.Main_StatusLeft_Ready.Locale());
+            try
+            {
+                _intelliSenseFiles = await PackageDownloader.DownloadIntelliSenseFile();
+                var selectionMode = lboxVersions.SelectionMode;
+                lboxVersions.SelectionMode = SelectionMode.None;
+                lboxVersions.DataSource = _intelliSenseFiles;
+                lboxVersions.ValueMember = "Version";
+                lboxVersions.DisplayMember = "Version";
+                lboxVersions.SelectionMode = selectionMode;
+                lboxVersions.SelectedIndex = 0;
+                UpdateStatusText(L.Main_StatusLeft_Ready.Locale());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void lboxVersions_SelectedValueChanged(object sender, EventArgs e)

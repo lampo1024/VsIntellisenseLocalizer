@@ -1,4 +1,6 @@
-﻿namespace VsIntellisenseLocalizer.Consts
+﻿using VsIntellisenseLocalizer.Utils.Exentsions;
+
+namespace VsIntellisenseLocalizer.Consts
 {
     public class L
     {
@@ -19,5 +21,6 @@
         public const string Message_Alert_CopyingPackage = "Message.Alert.CopyingPackage";
         public const string Message_Alert_CopyPackageSuccessful = "Message.Alert.CopyPackageSuccessful";
         public const string Message_Alert_LocalizedSuccessful = "Message.Alert.LocalizedSuccessful";
+        public static string Message_Alert_IsAdministrator = "Message.Alert.IsAdministrator".Locale();
     }
 }

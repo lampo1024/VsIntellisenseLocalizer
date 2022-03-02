@@ -144,6 +144,9 @@
   <data name="Message.Alert.CopyPackageSuccessful" xml:space="preserve">
     <value>语言包{0}复制成功</value>
   </data>
+  <data name="Message.Alert.IsAdministrator" xml:space="preserve">
+    <value>请以管理员身份运行此程序</value>
+  </data>
   <data name="Message.Alert.LocalizedSuccessful" xml:space="preserve">
     <value>本地化成功，语言包将在Visual Studio重启后生效。</value>
   </data>

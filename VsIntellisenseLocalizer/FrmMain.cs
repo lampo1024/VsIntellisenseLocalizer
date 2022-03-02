@@ -1,7 +1,7 @@
 using Flurl.Http;
 
 using System.IO.Compression;
-
+using System.Security.Principal;
 using VsIntellisenseLocalizer.Consts;
 using VsIntellisenseLocalizer.Models;
 using VsIntellisenseLocalizer.Utils;
@@ -15,6 +15,7 @@ namespace VsIntellisenseLocalizer
         private List<InstalledNet> _installedNets;
         private DownloadResource _selectedResource;
         private InstalledNet _selectedInstalledNet;
+        private bool _isAdministrator;
         public frmMain()
         {
             InitializeComponent();
@@ -49,8 +50,21 @@ namespace VsIntellisenseLocalizer
             lboxInstalledVersions.SelectionMode = selectionMode;
         }
 
+        public bool IsAdministrator()
+        {
+            var identity = WindowsIdentity.GetCurrent();
+            var principal = new WindowsPrincipal(identity);
+            return principal.IsInRole(WindowsBuiltInRole.Administrator);
+        }
+
         private async void frmMain_Load(object sender, EventArgs e)
         {
+            _isAdministrator = IsAdministrator();
+            if (!_isAdministrator)
+            {
+                MessageBox.Show(L.Message_Alert_IsAdministrator);
+                Application.Exit();
+            }
             try
             {
                 _intelliSenseFiles = await PackageDownloader.DownloadIntelliSenseFile();

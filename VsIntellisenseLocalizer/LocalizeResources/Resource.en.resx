@@ -144,6 +144,9 @@
   <data name="Message.Alert.CopyPackageSuccessful" xml:space="preserve">
     <value>Package {0} copied successfully.</value>
   </data>
+  <data name="Message.Alert.IsAdministrator" xml:space="preserve">
+    <value>Please run this application as administrator.</value>
+  </data>
   <data name="Message.Alert.LocalizedSuccessful" xml:space="preserve">
     <value>Localized successfully. Changes to the languages setting will not take effect until the environment restarted.</value>
   </data>

@@ -131,7 +131,7 @@
             // 
             // btnInstallLocalizePackage
             // 
-            this.btnInstallLocalizePackage.Location = new System.Drawing.Point(11, 318);
+            this.btnInstallLocalizePackage.Location = new System.Drawing.Point(10, 328);
             this.btnInstallLocalizePackage.Name = "btnInstallLocalizePackage";
             this.btnInstallLocalizePackage.Size = new System.Drawing.Size(147, 43);
             this.btnInstallLocalizePackage.TabIndex = 6;

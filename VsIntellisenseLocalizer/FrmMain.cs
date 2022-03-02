@@ -58,6 +58,7 @@ namespace VsIntellisenseLocalizer
             lboxVersions.ValueMember = "Version";
             lboxVersions.DisplayMember = "Version";
             lboxVersions.SelectionMode = selectionMode;
+            lboxVersions.SelectedIndex = 0;
             UpdateStatusText(L.Main_StatusLeft_Ready.Locale());
         }
 
@@ -151,12 +152,12 @@ namespace VsIntellisenseLocalizer
             foreach (var folder in distFolders)
             {
                 var f = InstalledNetFolderService.GetFolder(_selectedInstalledNet.VersionName);
-                var target = Path.Combine(VilConst.DotNetPacksBasePath, folder, _selectedInstalledNet.VersionName);
+                var target = Path.Combine(VilConst.DotNetPacksRoot, folder, _selectedInstalledNet.VersionName);
                 if (!Directory.Exists(target))
                 {
                     continue;
                 }
-                var dist = Path.Combine(VilConst.DotNetPacksBasePath, folder, _selectedInstalledNet.VersionName, "ref", f.TargetName, _selectedResource.Lang);
+                var dist = Path.Combine(VilConst.DotNetPacksRoot, folder, _selectedInstalledNet.VersionName, "ref", f.TargetName, _selectedResource.Lang);
                 if (!Directory.Exists(dist))
                 {
                     Directory.CreateDirectory(dist);
@@ -170,7 +171,7 @@ namespace VsIntellisenseLocalizer
             // Copy NETStandard.Library.Ref
             UpdateStatusText(L.Message_Alert_CopyingPackage.Locale("NETStandard.Library.Ref"));
             var sourceStandard = Path.Combine(txtDownloadFolder.Text, _selectedResource.FileNameWithoutExt, "NETStandard.Library.Ref", _selectedResource.Lang);
-            var distStandard = Path.Combine(VilConst.DotNetPacksBasePath, "NETStandard.Library.Ref", "2.1.0", "ref", "netstandard2.1", _selectedResource.Lang);
+            var distStandard = Path.Combine(VilConst.DotNetPacksRoot, "NETStandard.Library.Ref", "2.1.0", "ref", "netstandard2.1", _selectedResource.Lang);
             if (!Directory.Exists(distStandard))
             {
                 Directory.CreateDirectory(distStandard);
